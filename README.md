@@ -1,4 +1,5 @@
-atom-tab-control
-================
+# tab-control
 
-Simple Atom package to set tab settings on the current editor.
+This is an extremely simple package for [Atom](https://atom.io/) that gives you the ability to change the tab settings on an individual editor.
+
+![example](https://raw.githubusercontent.com/ehuss/atom-tab-control/master/example.png)
