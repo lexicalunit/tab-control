@@ -1,14 +1,13 @@
 {
   "name": "tab-control",
   "main": "./lib/tab-control",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Allows you to configure tab settings on the current editor.",
   "repository": "https://github.com/ehuss/atom-tab-control",
   "license": "Unlicense",
   "engines": {
     "atom": ">0.50.0"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "activationEvents": "tab-control:show"
 }
