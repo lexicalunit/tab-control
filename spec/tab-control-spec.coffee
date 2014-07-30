@@ -35,7 +35,9 @@ describe "TabControl", ->
       waitsForPromise ->
         activationPromise
       runs ->
-        expect(atom.packages.isPackageActive('tab-control')).toBe(true)
+        # Unfortunately Atom overrides the name in package.json to be whatever
+        # the directory is.
+        expect(atom.packages.isPackageActive('atom-tab-control')).toBe(true)
         expect(atom.workspaceView.find('.tab-control')).toExist()
 
     it "should allow selecting a tab length", ->
