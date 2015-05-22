@@ -9,5 +9,7 @@
     "atom": ">0.50.0"
   },
   "dependencies": {},
-  "activationEvents": "tab-control:show"
+  "activationCommands": {
+    "atom-text-editor": ["tab-control:show"]
+  }
 }
