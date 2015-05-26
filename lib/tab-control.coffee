@@ -1,18 +1,17 @@
-TabControlView = require './tab-control-view'
+commandDisposable = null
+tabControlView = null
 
 module.exports =
+  activate: ->
+    commandDisposable =
+      atom.commands.add('atom-workspace', 'tab-control:show', createTabControlView)
 
-  activate: (state) ->
-    atom.workspaceView.command('tab-control:show', '.editor', @show)
-    atom.workspaceView.command('tab-control:set-tab-length', '.editor', @setTabLength)
+  deactivate: ->
+    commandDisposable?.dispose()
+    commandDisposable = null
 
-  show: ->
-    editor = atom.workspace.getActiveEditor()
-    if editor?
-      view = new TabControlView(editor)
-      view.attach()
-
-  setTabLength: (event, options) ->
-    editor = atom.workspace.getActiveEditor()
-    if editor? and options?.tabLength?
-      editor.setTabLength(options.tabLength)
+createTabControlView = ->
+  unless tabControlView?
+    TabControlView = require './tab-control-view'
+    tabControlView = new TabControlView()
+  tabControlView.toggle()

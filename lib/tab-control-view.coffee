@@ -2,29 +2,16 @@
 
 module.exports =
 class TabControlView extends SelectListView
-  initialize: (@editor) ->
+  initialize: ->
     super
-    @addClass('tab-control overlay from-top')
+    @addClass('tab-control')
     @list.addClass('mark-active')
-    currentTabLength = editor.getTabLength()
-    items = for n in [1, 2, 3, 4, 8]
-      text: "Tab Width: #{n}"
-      command: 'tab-control:set-tab-length'
-      options: {tabLength: n}
-      active: currentTabLength==n
-    items.push
-      text: "Indent Using Spaces"
-      command: 'editor:toggle-soft-tabs'
-      active: editor.getSoftTabs()
-    @setItems(items)
 
   getFilterKey: ->
-    "text"
+    'name'
 
-  attach: ->
-    @storeFocusedElement()
-    atom.workspaceView.append(this)
-    @focusFilterEditor()
+  destroy: ->
+    @cancel()
 
   viewForItem: (item) ->
     element = document.createElement('li')
@@ -32,8 +19,37 @@ class TabControlView extends SelectListView
     element.textContent = item.text
     element
 
+  cancelled: ->
+    @panel?.destroy()
+    @panel = null
+    @editor = null
+
   confirmed: (item) ->
+    item.command item.value
     @cancel()
-    view = atom.workspaceView.getActiveView()
-    if view.hasClass('editor')
-      view.trigger(item.command, item.options)
+
+  attach: ->
+    @storeFocusedElement()
+    @panel ?= atom.workspace.addModalPanel(item: this)
+    @focusFilterEditor()
+
+  toggle: ->
+    if @panel?
+      @cancel()
+    else if @editor = atom.workspace.getActiveTextEditor()
+      @setItems(@getTabControlItems())
+      @attach()
+
+  getTabControlItems: ->
+    currentTabLength = @editor.getTabLength()
+    items = for n in [1, 2, 3, 4, 8]
+      text: "Tab Width: #{n}"
+      value: n
+      command: (value) => @editor.setTabLength(value)
+      active: currentTabLength == n
+    items.push
+      text: "Indent Using Spaces"
+      value: null
+      command: (value) => @editor.toggleSoftTabs()
+      active: @editor.getSoftTabs()
+    items
