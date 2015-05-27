@@ -1,66 +1,47 @@
-{WorkspaceView} = require 'atom'
-TabControl = require '../lib/tab-control'
-
-# Use the command `window:run-package-specs` (cmd-alt-ctrl-p) to run specs.
-#
-# To run a specific `it` or `describe` block add an `f` to the front (e.g. `fit`
-# or `fdescribe`). Remove the `f` to unfocus the block.
+path = require 'path'
 
 describe "TabControl", ->
-  editor = null
-  editorView = null
-  activationPromise = null
+  [activationPromise, editor, editorView, workspaceElement] =  []
 
   beforeEach ->
-    atom.workspaceView = new WorkspaceView
-    waitsForPromise ->
-      atom.workspace.open('test.txt')
+    workspaceElement = atom.views.getView(atom.workspace)
+    waitsForPromise -> atom.workspace.open('test.txt')
+
     runs ->
-      # Unfortunately the promise is not actually fulfilled until you trigger
-      # the plugin (when using activationEvents to delay initialization).
       activationPromise = atom.packages.activatePackage('tab-control')
+      editor = atom.workspace.getActiveTextEditor()
+      editorView = atom.views.getView(editor)
 
-
-  describe "when the tab-control:show event is triggered", ->
-    showTC = ->
-
-    beforeEach ->
-      expect(atom.workspaceView.find('.tab-control')).not.toExist()
-      editorView = atom.workspaceView.getActiveView()
-      expect(editorView).not.toBeUndefined()
-      {editor} = editorView
-
-    it "should be active", ->
-      editorView.trigger 'tab-control:show'
-      waitsForPromise ->
-        activationPromise
-      runs ->
-        # Unfortunately Atom overrides the name in package.json to be whatever
-        # the directory is.
-        expect(atom.packages.isPackageActive('atom-tab-control')).toBe(true)
-        expect(atom.workspaceView.find('.tab-control')).toExist()
-
-    it "should allow selecting a tab length", ->
+  describe "when tab-control:show is triggered", ->
+    it "displays a list of tab lengths", ->
       editor.setTabLength(2)
-      editorView.trigger 'tab-control:show'
-      waitsForPromise ->
-        activationPromise
-      runs ->
-        expect(editor.getTabLength()).toBe(2)
-        tcView = atom.workspaceView.find('.tab-control').view()
-        expect(tcView.items[1].active).toBeTruthy()
-        tcView.confirmed(tcView.items[3])
-        expect(editor.getTabLength()).toBe(4)
+      editor.setSoftTabs(false)
+      atom.commands.dispatch(editorView, 'tab-control:show')
+      waitsForPromise -> activationPromise
+      tabControlView = atom.workspace.getModalPanels()[0].getItem()
+      expect(tabControlView.list.children('li').length).toBe 6
+      expect(tabControlView.list.children('li:first').text()).toBe 'Tab Width: 1'
+      expect(tabControlView.list.children('li.active').text()).toBe 'Tab Width: 2'
+      tabControlView.cancelled()
 
-    # This doesn't work I think because the editor is not attached to the DOM?
-    # it "should support toggle soft tabs", ->
-    #   editor.setSoftTabs(true)
-    #   editorView.trigger 'tab-control:show'
-    #   waitsForPromise ->
-    #     activationPromise
-    #   runs ->
-    #     expect(editor.getSoftTabs()).toBeTruthy()
-    #     tcView = atom.workspaceView.find('.tab-control').view()
-    #     item = tcView.items.find((x) -> x.text=="Indent Using Spaces")
-    #     tcView.confirmed(item)
-    #     expect(editor.getSoftTabs()).toBeFalsy()
+  describe "when a tab length is selected", ->
+    it "sets the new tab length on the editor", ->
+      editor.setTabLength(2)
+      editor.setSoftTabs(false)
+      atom.commands.dispatch(editorView, 'tab-control:show')
+      waitsForPromise -> activationPromise
+      tabControlView = atom.workspace.getModalPanels()[0].getItem()
+      listItems = tabControlView.getTabControlItems()
+      tabControlView.confirmed(listItems[3])
+      expect(editor.getTabLength()).toBe 4
+
+  describe "when Indent Using Spaces is selected", ->
+    it "sets the new soft tabs setting on the editor", ->
+      editor.setTabLength(2)
+      editor.setSoftTabs(false)
+      atom.commands.dispatch(editorView, 'tab-control:show')
+      waitsForPromise -> activationPromise
+      tabControlView = atom.workspace.getModalPanels()[0].getItem()
+      listItems = tabControlView.getTabControlItems()
+      tabControlView.confirmed(listItems[5])
+      expect(editor.getSoftTabs()).toBeTruthy()
