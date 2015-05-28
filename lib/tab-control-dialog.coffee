@@ -1,11 +1,12 @@
 {SelectListView} = require 'atom-space-pen-views'
 
 module.exports =
-class TabControlView extends SelectListView
-  initialize: ->
+class TabControlDialog extends SelectListView
+  initialize: (@status) ->
     super
-    @addClass('tab-control')
-    @list.addClass('mark-active')
+    @addClass 'tab-control'
+    @list.addClass 'mark-active'
+    this
 
   getFilterKey: ->
     'name'
@@ -14,8 +15,8 @@ class TabControlView extends SelectListView
     @cancel()
 
   viewForItem: (item) ->
-    element = document.createElement('li')
-    element.classList.add('active') if item.active
+    element = document.createElement 'li'
+    element.classList.add 'active' if item.active
     element.textContent = item.text
     element
 
@@ -26,26 +27,28 @@ class TabControlView extends SelectListView
 
   confirmed: (item) ->
     item.command item.value
+    @status?.update()
     @cancel()
 
   attach: ->
     @storeFocusedElement()
-    @panel ?= atom.workspace.addModalPanel(item: this)
+    @panel ?= atom.workspace.addModalPanel
+      item: this
     @focusFilterEditor()
 
   toggle: ->
     if @panel?
       @cancel()
     else if @editor = atom.workspace.getActiveTextEditor()
-      @setItems(@getTabControlItems())
+      @setItems @getTabControlItems()
       @attach()
 
   getTabControlItems: ->
     currentTabLength = @editor.getTabLength()
     items = for n in [1, 2, 3, 4, 8]
-      text: "Tab Width: #{n}"
+      text: "Tab Length: #{n}"
       value: n
-      command: (value) => @editor.setTabLength(value)
+      command: (value) => @editor.setTabLength value
       active: currentTabLength == n
     items.push
       text: "Indent Using Spaces"

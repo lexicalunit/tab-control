@@ -1,19 +1,38 @@
 {
   "name": "tab-control",
+  "author": "lexicalunit <lexicalunit@lexicalunit.com>",
   "main": "./lib/tab-control",
   "version": "0.1.1",
-  "description": "Allows you to configure tab settings on the current editor.",
-  "repository": "https://github.com/lexicalunit/atom-tab-control",
-  "license": "Unlicense",
+  "description": "Control and view status of indentation settings.",
+  "repository": "https://github.com/lexicalunit/tab-control",
+  "license": "MIT",
   "engines": {
     "atom": ">=0.185.0 <2.0.0"
   },
+  "coffeelintConfig": {
+    "max_line_length": {
+      "name": "max_line_length",
+      "value": 120,
+      "level": "warn",
+      "limitComments": true
+    }
+  },
+  "consumedServices": {
+    "status-bar": {
+      "versions": {
+        "^1.0.0": "consumeStatusBar"
+      }
+    }
+  },
+  "keywords": [
+    "indentation",
+    "indicator",
+    "status-bar",
+    "productivity",
+    "tabs",
+    "spaces"
+  ],
   "dependencies": {
     "atom-space-pen-views": "^2.0.5"
-  },
-  "activationCommands": {
-    "atom-text-editor": [
-      "tab-control:show"
-    ]
   }
 }
