@@ -18,3 +18,5 @@ A simple package for [Atom](https://atom.io/) that provides controls for tab len
 - Refactor `IndentControl.hook` and package global `status`.
 - Improve test coverage.
 - Make status-bar indicator enabled by default.
+- Formatting options for status-bar indicator.
+- Improve documentation (readme and source level).
