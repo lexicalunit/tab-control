@@ -19,8 +19,11 @@
 
 # Future Work
 
+- Better/updated screenshots.
 - Refactor `IndentControl.hook` and package global `status`.
 - Improve test coverage.
 - Formatting options for status-bar indicator.
 - Improve documentation (readme and source level).
+- Save soft tabs setting?
 - Make status-bar indicator enabled by default?
+- Configurable tab lengths?
