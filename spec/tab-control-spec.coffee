@@ -43,7 +43,7 @@ describe 'TabControl', ->
         editor.setSoftTabs(false)
 
     it 'reflects the editor settings', ->
-      expect(TabControl.hook.text()).toBe 'Spaces:2'
+      expect(TabControl.hook.text()).toBe 'Spaces: 2'
 
   describe 'dialog', ->
     beforeEach ->

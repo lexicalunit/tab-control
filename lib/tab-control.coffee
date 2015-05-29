@@ -12,6 +12,9 @@ class TabControl
     displayInStatusBar:
       type: 'boolean'
       default: false
+    autoSaveChanges:
+      type: 'boolean'
+      default: false
 
   dialog: null
   subs: null

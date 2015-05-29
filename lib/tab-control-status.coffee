@@ -15,13 +15,15 @@ class TabControlStatus extends View
     this
 
   attach: (statusBar) ->
-    @tile = statusBar.addLeftTile
+    @tile = statusBar.addRightTile
       item: this
-      priority: 100
+      priority: 10
     @handleEvents()
     @update()
 
   handleEvents: ->
+    @click ->
+      atom.commands.dispatch atom.views.getView(atom.workspace), 'tab-control:show'
     @subs.add atom.workspace.onDidChangeActivePaneItem =>
       @update()
     @subs.add atom.config.observe 'tab-control.displayInStatusBar', =>
@@ -41,7 +43,7 @@ class TabControlStatus extends View
     if editor and @displayInStatusBar
       type = if editor.getSoftTabs() then 'Spaces' else 'Tabs'
       length = editor.getTabLength()
-      @text "#{type}:#{length}"
+      @text "#{type}: #{length}"
       @show()
     else
       @hide()

@@ -2,6 +2,9 @@
 
 module.exports =
 class TabControlDialog extends SelectListView
+  autoSaveChanges: false
+  sub: null
+
   initialize: (@status) ->
     super
     @addClass 'tab-control'
@@ -12,6 +15,7 @@ class TabControlDialog extends SelectListView
     'name'
 
   destroy: ->
+    sub?.dispose()
     @cancel()
 
   viewForItem: (item) ->
@@ -28,13 +32,26 @@ class TabControlDialog extends SelectListView
   confirmed: (item) ->
     item.command item.value
     @status?.update()
+    if @autoSaveChanges
+      @saveChanges()
     @cancel()
+
+  saveChanges: ->
+    scope = atom.workspace.getActiveTextEditor()?.getGrammar()?.scopeName
+    return unless scope?
+    atom.config.set 'editor.tabLength', @editor.getTabLength(),
+      scopeSelector: scope
 
   attach: ->
     @storeFocusedElement()
     @panel ?= atom.workspace.addModalPanel
       item: this
     @focusFilterEditor()
+    @sub = atom.config.observe 'tab-control.autoSaveChanges', =>
+      @updateConfig()
+
+  updateConfig: ->
+    @autoSaveChanges = atom.config.get 'tab-control.autoSaveChanges'
 
   toggle: ->
     if @panel?
