@@ -8,7 +8,7 @@
 
 ## Status Indicator
 
-Optionally enable a stats bar indicator that can be clicked to pull up the tab control dialog.
+Optionally enable a status bar indicator that can be clicked to pull up the tab control dialog.
 
 ![status](https://cloud.githubusercontent.com/assets/1903876/7895707/89a59a3c-0662-11e5-8fd5-21b4ad3c3341.png)
 
