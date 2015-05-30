@@ -2,7 +2,7 @@
   "name": "tab-control",
   "author": "lexicalunit <lexicalunit@lexicalunit.com>",
   "main": "./lib/tab-control",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Control and view status of indentation settings.",
   "repository": "https://github.com/lexicalunit/tab-control",
   "license": "MIT",
