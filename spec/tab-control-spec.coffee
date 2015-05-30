@@ -17,17 +17,17 @@ describe 'TabControl', ->
 
   describe 'initialize', ->
     it 'displays in the status bar', ->
-      expect(TabControl.hook).toBeDefined()
+      expect(TabControl.status).toBeDefined()
 
   describe 'when there is no file open', ->
     it 'is not visible', ->
-      expect(TabControl.hook.is(":visible")).toBe(false)
+      expect(TabControl.status.is(":visible")).toBe(false)
 
   describe 'deactivate', ->
     it 'removes the indicator', ->
-      expect(TabControl.hook).toExist()
+      expect(TabControl.status).toExist()
       atom.packages.deactivatePackage('tab-control')
-      expect(TabControl.hook).toBeNull()
+      expect(TabControl.status).toBeNull()
 
     it 'can be executed twice', ->
       atom.packages.deactivatePackage('tab-control')
@@ -43,7 +43,7 @@ describe 'TabControl', ->
         editor.setSoftTabs(false)
 
     it 'reflects the editor settings', ->
-      expect(TabControl.hook.text()).toBe 'Spaces: 2'
+      expect(TabControl.status.text()).toBe 'Spaces: 2'
 
   describe 'dialog', ->
     beforeEach ->

@@ -3,9 +3,9 @@
 
 module.exports =
 class TabControlStatus extends View
+  displayInStatusBar: true
   subs: null
   tile: null
-  displayInStatusBar: true
 
   @content: ->
     @div class:"tab-control-status inline-block", ->
