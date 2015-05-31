@@ -41,6 +41,8 @@ class TabControlDialog extends SelectListView
     return unless scope?
     atom.config.set 'editor.tabLength', @editor.getTabLength(),
       scopeSelector: scope
+    atom.config.set 'editor.softTabs', @editor.getSoftTabs(),
+      scopeSelector: scope
 
   attach: ->
     @storeFocusedElement()
