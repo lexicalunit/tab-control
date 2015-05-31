@@ -8,7 +8,7 @@ class TabControl
       default: false
     displayInStatusBar:
       type: 'boolean'
-      default: false
+      default: true
 
   dialog: null
   status: null

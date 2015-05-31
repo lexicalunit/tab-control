@@ -22,5 +22,4 @@ Optionally enable a status bar indicator that can be clicked to pull up the tab 
 - Improve source level documentation.
 - Formatting options for status-bar indicator?
 - Save soft tabs setting?
-- Make status-bar indicator enabled by default?
 - Configurable tab lengths?
