@@ -14,7 +14,7 @@ class TabControl
   status: null
   subs: null
 
-  activate: =>
+  activate: ->
     @status = new TabControlStatus
     @subs = new CompositeDisposable
     @subs.add atom.commands.add 'atom-workspace', 'tab-control:show', @show
@@ -22,10 +22,10 @@ class TabControl
       disposable = editor.onDidChangeGrammar => @status?.update()
       editor.onDidDestroy -> disposable.dispose()
 
-  consumeStatusBar: (statusBar) =>
+  consumeStatusBar: (statusBar) ->
     @status.attach statusBar
 
-  deactivate: =>
+  deactivate: ->
     @subs?.dispose()
     @subs = null
     @dialog?.destroy()
@@ -33,7 +33,7 @@ class TabControl
     @status?.destroy()
     @status = null
 
-  show: =>
+  show: =>  # fat arrow required
     unless @dialog?
       TabControlDialog = require './tab-control-dialog'
       @dialog = new TabControlDialog @status
