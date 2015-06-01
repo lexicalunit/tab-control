@@ -14,18 +14,18 @@ class TabControl
   status: null
   subs: null
 
-  activate: ->
+  activate: =>
     @status = new TabControlStatus
     @subs = new CompositeDisposable
     @subs.add atom.commands.add 'atom-workspace', 'tab-control:show', @show
-    @subs.add atom.workspace.observeTextEditors (editor) ->
-      disposable = editor.onDidChangeGrammar -> @status?.update()
+    @subs.add atom.workspace.observeTextEditors (editor) =>
+      disposable = editor.onDidChangeGrammar => @status?.update()
       editor.onDidDestroy -> disposable.dispose()
 
-  consumeStatusBar: (statusBar) ->
+  consumeStatusBar: (statusBar) =>
     @status.attach statusBar
 
-  deactivate: ->
+  deactivate: =>
     @subs?.dispose()
     @subs = null
     @dialog?.destroy()
