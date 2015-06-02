@@ -8,3 +8,19 @@
     text-decoration: underline;
   }
 }
+
+.tab-control {
+  .list-group {
+    li {
+      border: 1px solid transparent !important;
+    }
+
+    .seperator + li {
+      border-top: 1px solid @pane-item-border-color !important;
+    }
+
+    .seperator {
+      display: none;
+    }
+  }
+}
