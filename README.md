@@ -20,6 +20,6 @@ Optionally enable a status bar indicator that can be clicked to pull up the tab 
 
 - Improve test coverage.
 - Improve source level documentation.
-- Formatting options for status-bar indicator?
-- Save soft tabs setting?
-- Configurable tab lengths?
+- Formatting/position options for status-bar indicator.
+- Save soft tabs setting, blocked by [#3719](https://github.com/atom/atom/issues/3719).
+- Popup window on indicator click rather than bringing down the command palette.
