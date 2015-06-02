@@ -58,8 +58,8 @@ describe 'TabControl', ->
       it 'displays a list of tab lengths', ->
         atom.commands.dispatch(editorView, 'tab-control:show')
         dialog = atom.workspace.getModalPanels()[0].getItem()
-        expect(dialog.list.children('li').length).toBe 6
-        expect(dialog.list.children('li:first').text()).toBe 'Tab Length: 1'
+        expect(dialog.list.children('li').length).toBe 7
+        expect(dialog.list.children('li:first').text()).toBe 'Indent Using Spaces'
         expect(dialog.list.children('li.active').text()).toBe 'Tab Length: 2'
 
     describe 'when an tab length is selected', ->
@@ -67,7 +67,7 @@ describe 'TabControl', ->
         atom.commands.dispatch(editorView, 'tab-control:show')
         dialog = atom.workspace.getModalPanels()[0].getItem()
         listItems = dialog.getTabControlItems()
-        dialog.confirmed(listItems[3])
+        dialog.confirmed(listItems[5])
         expect(editor.getTabLength()).toBe 4
 
     describe 'when Indent Using Spaces is selected', ->
