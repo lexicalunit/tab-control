@@ -110,9 +110,9 @@ class TabControlDialog extends SelectListView
     scope = atom.workspace.getActiveTextEditor()?.getGrammar()?.scopeName
     return unless scope?
     atom.config.set 'editor.tabLength', @editor.getTabLength(),
-      scopeSelector: scope
+      scopeSelector: ".#{scope}"
     atom.config.set 'editor.softTabs', @editor.getSoftTabs(),
-      scopeSelector: scope
+      scopeSelector: ".#{scope}"
 
   # Private: Attach dialog view to workspace.
   attach: ->
