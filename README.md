@@ -27,6 +27,7 @@ When [tabs-to-spaces](https://atom.io/packages/tabs-to-spaces) is also installed
 ## Future Work
 
 - Improve test coverage.
+- Add indicator toggle command.
 - Formatting/position options for status-bar indicator.
 - Popup window on indicator click rather than bringing down the command palette. Blocked by [atom/atom#5756](https://github.com/atom/atom/issues/5756).
 - Move away from atom-space-pen-views. Blocked by [atom/atom#5756](https://github.com/atom/atom/issues/5756).
