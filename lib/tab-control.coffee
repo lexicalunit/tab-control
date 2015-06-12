@@ -1,6 +1,3 @@
-{CompositeDisposable} = require 'atom'
-TabControlStatus = require './tab-control-status'
-
 # Public: Package for controling and monitoring tab settings.
 class TabControl
   config:
@@ -17,8 +14,11 @@ class TabControl
 
   # Public: Creates status bar indicator and sets up commands for control dialog.
   activate: ->
-    @status = new TabControlStatus
+    # performance optimization: require only after activation
+    {CompositeDisposable} = require 'atom'
+    TabControlStatus = require './tab-control-status'
     @subs = new CompositeDisposable
+    @status = new TabControlStatus
     @subs.add atom.commands.add 'atom-workspace', 'tab-control:show', @show
     @subs.add atom.workspace.observeTextEditors (editor) =>
       disposable = editor.onDidChangeGrammar => @status?.update()
