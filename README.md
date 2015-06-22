@@ -1,6 +1,6 @@
 # Tab Control
 
-[![Build Status](https://travis-ci.org/lexicalunit/tab-control.svg?branch=master)](https://travis-ci.org/lexicalunit/tab-control) [![Dependency Status](https://david-dm.org/lexicalunit/tab-control.svg)](https://david-dm.org/lexicalunit/tab-control)
+[![Build Status](https://travis-ci.org/lexicalunit/tab-control.svg?branch=master)](https://travis-ci.org/lexicalunit/tab-control) [![Dependency Status](https://david-dm.org/lexicalunit/tab-control.svg)](https://david-dm.org/lexicalunit/tab-control) [![Build status](https://ci.appveyor.com/api/projects/status/v9dxs79racdge924/branch/master?svg=true)](https://ci.appveyor.com/project/lexicalunit/tab-control/branch/master)
 
 [Atom](https://atom.io/) package that provides more and easier control over tab settings such as tab length and soft tabs.
 
@@ -32,4 +32,3 @@ When [tabs-to-spaces](https://atom.io/packages/tabs-to-spaces) is also installed
 - Popup window on indicator click rather than bringing down the command palette. Blocked by [atom/atom#5756](https://github.com/atom/atom/issues/5756).
 - Move away from atom-space-pen-views. Blocked by [atom/atom#5756](https://github.com/atom/atom/issues/5756).
 - Save soft tabs setting. Blocked by [atom/atom#3719](https://github.com/atom/atom/issues/3719).
-- Appveyor/Windows CI (Blocked by [atom/ci@12](https://github.com/atom/ci/pull/12))
