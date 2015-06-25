@@ -93,7 +93,6 @@ class TabControlDialog extends SelectListView
 
   # Private: Called when selection is made.
   confirmed: (item) ->
-    console.log 'confirmed'
     return unless item?
     return unless item.command?
     if item.value?
