@@ -1,26 +1,21 @@
 @import "ui-variables";
-
 .tab-control-status {
-  color: @text-color;
-
-  &:hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
+    color: @text-color;
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
 }
-
 .tab-control {
-  .list-group {
-    li {
-      border: 1px solid transparent !important;
+    .list-group {
+        li {
+            border: 1px solid transparent !important;
+        }
+        .seperator + li {
+            border-top: 1px solid @pane-item-border-color !important;
+        }
+        .seperator {
+            display: none;
+        }
     }
-
-    .seperator + li {
-      border-top: 1px solid @pane-item-border-color !important;
-    }
-
-    .seperator {
-      display: none;
-    }
-  }
 }

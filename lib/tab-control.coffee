@@ -34,7 +34,7 @@ class TabControl
     @status = null
 
   # Public: Shows control dialog.
-  show: =>  # fat arrow required
+  show: => # fat arrow required
     unless @dialog?
       TabControlDialog = require './tab-control-dialog'
       @dialog = new TabControlDialog @status

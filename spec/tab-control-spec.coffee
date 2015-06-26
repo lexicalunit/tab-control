@@ -2,7 +2,7 @@ TabControl = require '../lib/tab-control'
 path = require 'path'
 
 describe 'TabControl', ->
-  [editor, editorView, workspaceElement] =  []
+  [editor, editorView, workspaceElement] = []
 
   beforeEach ->
     workspaceElement = atom.views.getView(atom.workspace)
