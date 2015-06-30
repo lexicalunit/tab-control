@@ -1,6 +1,6 @@
 # Tab Control
 
-[![Build Status](https://travis-ci.org/lexicalunit/tab-control.svg?branch=master)](https://travis-ci.org/lexicalunit/tab-control) [![Dependency Status](https://david-dm.org/lexicalunit/tab-control.svg)](https://david-dm.org/lexicalunit/tab-control) [![Build status](https://ci.appveyor.com/api/projects/status/v9dxs79racdge924/branch/master?svg=true)](https://ci.appveyor.com/project/lexicalunit/tab-control/branch/master)
+[![Build Status](https://travis-ci.org/lexicalunit/tab-control.svg?branch=master)](https://travis-ci.org/lexicalunit/tab-control) [![Dependency Status](https://david-dm.org/lexicalunit/tab-control.svg)](https://david-dm.org/lexicalunit/tab-control)
 
 [Atom](https://atom.io/) package that provides more and easier control over tab settings such as tab length and soft tabs.
 
