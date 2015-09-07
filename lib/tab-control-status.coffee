@@ -11,7 +11,7 @@ class TabControlStatus extends View
 
   # Private: Setup space-pen view template.
   @content: ->
-    @div class: "tab-control-status inline-block"
+    @a class: "tab-control-status inline-block"
 
   # Public: Creates new indicator view.
   initialize: ->
