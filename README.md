@@ -1,6 +1,10 @@
 # Tab Control
 
-[![Build Status](https://travis-ci.org/lexicalunit/tab-control.svg?branch=master)](https://travis-ci.org/lexicalunit/tab-control) [![Dependency Status](https://david-dm.org/lexicalunit/tab-control.svg)](https://david-dm.org/lexicalunit/tab-control)
+[![apm package][apm-ver-link]][releases]
+[![][travis-ci-badge]][travis-ci]
+[![][david-badge]][david]
+[![][dl-badge]][apm-pkg-link]
+[![][mit-badge]][mit]
 
 [Atom](https://atom.io/) package that provides more and easier control over tab settings such as tab length and soft tabs.
 
@@ -32,3 +36,20 @@ When [tabs-to-spaces](https://atom.io/packages/tabs-to-spaces) is also installed
 - Popup window on indicator click rather than bringing down the command palette. Blocked by [atom/atom#5756](https://github.com/atom/atom/issues/5756).
 - Move away from atom-space-pen-views. Blocked by [atom/atom#5756](https://github.com/atom/atom/issues/5756).
 - Save soft tabs setting. Blocked by [atom/atom#3719](https://github.com/atom/atom/issues/3719).
+
+---
+
+[MIT][mit] © [lexicalunit][author] et [al][contributors]
+
+[mit]:              http://opensource.org/licenses/MIT
+[author]:           http://github.com/lexicalunit
+[contributors]:     https://github.com/lexicalunit/tab-control/graphs/contributors
+[releases]:         https://github.com/lexicalunit/tab-control/releases
+[mit-badge]:        https://img.shields.io/apm/l/tab-control.svg
+[apm-pkg-link]:     https://atom.io/packages/tab-control
+[apm-ver-link]:     https://img.shields.io/apm/v/tab-control.svg
+[dl-badge]:         http://img.shields.io/apm/dm/tab-control.svg
+[travis-ci-badge]:  https://travis-ci.org/lexicalunit/tab-control.svg?branch=master
+[travis-ci]:        https://travis-ci.org/lexicalunit/tab-control
+[david-badge]:      https://david-dm.org/lexicalunit/tab-control.svg
+[david]:            https://david-dm.org/lexicalunit/tab-control
